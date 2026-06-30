@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yaswanth Gurram — Backend Engineer | Agentic AI & GenAI</title>
+<meta name="description" content="Venkata Bala Sai Yaswanth Gurram — Backend Engineer specializing in Node.js, Python, AWS, and Agentic AI / GenAI. 4+ years building scalable cloud-native microservices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e1a; --bg2:#0f1424; --card:rgba(255,255,255,0.04);
+    --border:rgba(255,255,255,0.08); --txt:#e8ecf5; --muted:#9aa5bd;
+    --cyan:#22d3ee; --purple:#a855f7; --grad:linear-gradient(135deg,#22d3ee,#a855f7);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .grad-txt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* animated background blobs */
+  .blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.18;z-index:-1;animation:float 14s ease-in-out infinite}
+  .blob1{width:500px;height:500px;background:#22d3ee;top:-150px;left:-150px}
+  .blob2{width:450px;height:450px;background:#a855f7;top:40%;right:-150px;animation-delay:-5s}
+  @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,40px)}}
+
+  /* nav */
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(14px);background:rgba(10,14,26,.7);border-bottom:1px solid var(--border)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;height:66px}
+  nav .logo{font-weight:800;font-size:1.1rem}
+  nav ul{display:flex;gap:28px;list-style:none}
+  nav ul a{color:var(--muted);font-weight:500;font-size:.92rem;transition:.2s}
+  nav ul a:hover{color:var(--cyan)}
+  .menu-btn{display:none;background:none;border:none;color:var(--txt);font-size:1.6rem;cursor:pointer}
+
+  /* hero */
+  header{min-height:100vh;display:flex;align-items:center;padding-top:66px}
+  .tag{display:inline-block;font-size:.8rem;padding:7px 16px;border:1px solid var(--border);border-radius:50px;color:var(--cyan);margin-bottom:24px;background:var(--card)}
+  h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:900;line-height:1.05;letter-spacing:-1px}
+  .role{font-size:clamp(1rem,2.5vw,1.4rem);color:var(--muted);font-weight:500;margin:18px 0 8px}
+  .loc{color:var(--muted);font-size:.95rem;margin-bottom:30px}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:12px;font-weight:600;font-size:.95rem;transition:.25s;cursor:pointer;border:1px solid var(--border)}
+  .btn-pri{background:var(--grad);color:#0a0e1a;border:none}
+  .btn-pri:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(34,211,238,.35)}
+  .btn-sec{background:var(--card);color:var(--txt)}
+  .btn-sec:hover{border-color:var(--cyan);color:var(--cyan)}
+
+  /* sections */
+  section{padding:90px 0}
+  .sec-head{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:8px}
+  .sec-sub{color:var(--muted);margin-bottom:46px}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;transition:.25s}
+  .skill-card:hover{transform:translateY(-5px);border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.04)}
+  .skill-card h3{font-size:1.05rem;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .chip{display:inline-block;font-size:.78rem;padding:5px 11px;margin:4px 4px 0 0;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:8px;color:var(--muted)}
+
+  /* timeline */
+  .tl{position:relative;padding-left:30px}
+  .tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--grad)}
+  .tl-item{position:relative;margin-bottom:42px}
+  .tl-item::before{content:'';position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 4px rgba(34,211,238,.15)}
+  .tl-item h3{font-size:1.25rem;font-weight:700}
+  .tl-item .co{color:var(--cyan);font-weight:500;margin-bottom:2px}
+  .tl-item .date{color:var(--muted);font-size:.85rem;margin-bottom:12px}
+  .tl-item ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .tl-item li{color:var(--muted);font-size:.95rem;padding-left:20px;position:relative}
+  .tl-item li::before{content:'▸';position:absolute;left:0;color:var(--purple)}
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+  .proj{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;transition:.3s;position:relative;overflow:hidden}
+  .proj::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:.3s}
+  .proj:hover::before{transform:scaleX(1)}
+  .proj:hover{transform:translateY(-6px);border-color:rgba(168,85,247,.4)}
+  .proj h3{font-size:1.2rem;margin-bottom:12px}
+  .proj p{color:var(--muted);font-size:.92rem;margin-bottom:16px}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px}
+
+  /* certs */
+  .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+  .cert{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;align-items:center;gap:14px;transition:.25s}
+  .cert:hover{border-color:rgba(34,211,238,.4)}
+  .cert .ico{font-size:1.6rem}
+
+  /* contact */
+  .contact{text-align:center;background:linear-gradient(135deg,rgba(34,211,238,.07),rgba(168,85,247,.07));border:1px solid var(--border);border-radius:24px;padding:60px 30px;margin-bottom:60px}
+  .contact h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;margin-bottom:14px}
+  .contact p{color:var(--muted);margin-bottom:28px}
+  footer{text-align:center;color:var(--muted);font-size:.85rem;padding-bottom:40px}
+
+  @media(max-width:760px){
+    nav ul{display:none}
+    .menu-btn{display:block}
+    nav ul.open{display:flex;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--bg2);padding:20px 24px;gap:18px;border-bottom:1px solid var(--border)}
+  }
+  .reveal{opacity:0;transform:translateY(30px);transition:.7s}
+  .reveal.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo grad-txt">YG.</div>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+    <ul id="nav">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="tag mono">● Available for opportunities</span>
+    <h1>Venkata Bala Sai<br><span class="grad-txt">Yaswanth Gurram</span></h1>
+    <p class="role">Backend Engineer &nbsp;·&nbsp; Node.js · Python · AWS &nbsp;·&nbsp; Agentic AI & GenAI</p>
+    <p class="loc">📍 Kavali, Andhra Pradesh, India</p>
+    <div class="btns">
+      <a class="btn btn-pri" href="#contact">Get in Touch</a>
+      <a class="btn btn-sec" href="https://github.com/Gurram-2000" target="_blank">GitHub ↗</a>
+      <a class="btn btn-sec" href="https://linkedin.com/in/yaswanth-gurram-933a9b152" target="_blank">LinkedIn ↗</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <h2 class="sec-head">About <span class="grad-txt">Me</span></h2>
+    <p class="sec-sub">Building reliable systems where backend engineering meets agentic AI.</p>
+    <p style="max-width:760px;color:var(--muted);font-size:1.05rem">
+      Backend Engineer with <strong style="color:var(--txt)">4+ years</strong> building scalable microservices and cloud-native systems on AWS using Node.js and Python. I apply LLM and agentic AI techniques — <strong style="color:var(--txt)">RAG, multi-agent orchestration, and function calling</strong> — to automate operational workflows like incident response and compliance auditing. Strong foundations in distributed systems, REST APIs, and CI/CD automation. AWS Certified Developer & Solutions Architect Associate.
+    </p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <h2 class="sec-head">Technical <span class="grad-txt">Skills</span></h2>
+    <p class="sec-sub">The tools and technologies I work with every day.</p>
+    <div class="skill-grid">
+      <div class="skill-card"><h3>💻 Languages</h3><div><span class="chip">JavaScript (ES6+)</span><span class="chip">Python 3.x</span></div></div>
+      <div class="skill-card"><h3>⚙️ Backend</h3><div><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">Flask</span><span class="chip">FastAPI</span></div></div>
+      <div class="skill-card"><h3>☁️ AWS Cloud</h3><div><span class="chip">Lambda</span><span class="chip">S3</span><span class="chip">DynamoDB</span><span class="chip">EventBridge</span><span class="chip">SQS / SNS</span><span class="chip">API Gateway</span><span class="chip">EC2</span><span class="chip">IAM</span><span class="chip">CloudWatch</span><span class="chip">Bedrock</span></div></div>
+      <div class="skill-card"><h3>🗄️ Databases</h3><div><span class="chip">MongoDB</span><span class="chip">DynamoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Pinecone</span></div></div>
+      <div class="skill-card"><h3>🤖 AI / LLM</h3><div><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">OpenAI API</span><span class="chip">RAG Pipelines</span><span class="chip">Prompt Engineering</span><span class="chip">Vector Search</span></div></div>
+      <div class="skill-card"><h3>🚀 DevOps & Observability</h3><div><span class="chip">GitHub Actions</span><span class="chip">AWS CDK</span><span class="chip">Kubernetes</span><span class="chip">Dynatrace</span><span class="chip">OpenSearch</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <h2 class="sec-head">Professional <span class="grad-txt">Experience</span></h2>
+    <p class="sec-sub">4+ years across enterprise banking & consulting platforms.</p>
+    <div class="tl">
+      <div class="tl-item">
+        <h3>Application Developer</h3>
+        <div class="co">IBM India Private Limited</div>
+        <div class="date mono">Aug 2025 – Present</div>
+        <ul>
+          <li>Build backend microservices for enterprise banking platforms on AWS, supporting high-volume daily transaction processing.</li>
+          <li>Designed an AI-assisted service-reliability tool (LangGraph + OpenAI function calling) cutting mean time to resolution by <strong style="color:var(--txt)">55%</strong>.</li>
+          <li>Led an AWS SDK v2→v3 migration adapter using AI-assisted code generation, reducing effort across 600+ services by ~80%.</li>
+          <li>Automated compliance auditing & incident-escalation workflows using multi-agent pipelines.</li>
+          <li>Built observability pipelines (CloudWatch, Dynatrace) with LLM-assisted log anomaly detection.</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <h3>Senior Software Engineer</h3>
+        <div class="co">Virtusa Consulting Services</div>
+        <div class="date mono">Aug 2021 – Jul 2025</div>
+        <ul>
+          <li>Migrated 50+ RESTful APIs to AWS (Lambda, API Gateway, DynamoDB), improving uptime to <strong style="color:var(--txt)">99.9%</strong>.</li>
+          <li>Built Node.js & Python automation frameworks cutting deployment effort by 60%.</li>
+          <li>Integrated LLM-assisted code review into CI/CD pipelines, improving review speed & defect catch rate.</li>
+          <li>Reduced average API latency by 40% via query tuning, Redis caching & connection pooling.</li>
+          <li>Partnered with product, architecture & QA to design enterprise-grade distributed systems.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap reveal">
+    <h2 class="sec-head">Key <span class="grad-txt">Projects</span></h2>
+    <p class="sec-sub">Where agentic AI meets production-grade engineering.</p>
+    <div class="proj-grid">
+      <div class="proj">
+        <h3>🛰️ Autonomous Incident Management</h3>
+        <p>Multi-agent system that detects, diagnoses & remediates API incidents using CloudWatch logs and a Pinecone knowledge base. Cut MTTR by 55% and alert noise by 60% across 600+ microservices.</p>
+        <div class="stack"><span class="chip">LangGraph</span><span class="chip">OpenAI</span><span class="chip">Lambda</span><span class="chip">Pinecone</span><span class="chip">Node.js</span><span class="chip">Python</span></div>
+      </div>
+      <div class="proj">
+        <h3>💬 RAG Banking Support Chatbot</h3>
+        <p>Production chatbot using Retrieval-Augmented Generation with domain knowledge bases, multi-turn memory & tool-use for account lookups. Cut support ticket volume by ~40% on a serverless AWS stack.</p>
+        <div class="stack"><span class="chip">Node.js</span><span class="chip">Lambda</span><span class="chip">OpenAI</span><span class="chip">LangChain</span><span class="chip">Pinecone</span><span class="chip">Redis</span></div>
+      </div>
+      <div class="proj">
+        <h3>📑 GitParser — Compliance Automation</h3>
+        <p>LLM-assisted rule engine that converts new policies into executable checks across 600+ GitHub repos. Cut compliance review effort by ~95% and policy cycles from weeks to hours.</p>
+        <div class="stack"><span class="chip">Node.js</span><span class="chip">Python</span><span class="chip">Lambda</span><span class="chip">GitHub API</span><span class="chip">OpenAI</span><span class="chip">DynamoDB</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap reveal">
+    <h2 class="sec-head">Certifications & <span class="grad-txt">Education</span></h2>
+    <p class="sec-sub">Validated cloud, infrastructure & AI expertise.</p>
+    <div class="cert-grid">
+      <div class="cert"><span class="ico">🏆</span><div>AWS Certified Developer<br><small style="color:var(--muted)">Associate</small></div></div>
+      <div class="cert"><span class="ico">🏗️</span><div>AWS Solutions Architect<br><small style="color:var(--muted)">Associate</small></div></div>
+      <div class="cert"><span class="ico">⚡</span><div>HashiCorp Terraform<br><small style="color:var(--muted)">Associate</small></div></div>
+      <div class="cert"><span class="ico">🤖</span><div>IBM Generative & Agentic AI<br><small style="color:var(--muted)">Foundations · 2026</small></div></div>
+      <div class="cert"><span class="ico">🎓</span><div>B.E. Computer Science<br><small style="color:var(--muted)">R.M.D Engineering College · 2017–2021</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="contact">
+      <h2>Let's <span class="grad-txt">Build</span> Something</h2>
+      <p>Open to backend engineering & agentic AI opportunities. Reach out anytime.</p>
+      <div class="btns" style="justify-content:center">
+        <a class="btn btn-pri" href="mailto:yaswanth.gvb@gmail.com">✉️ yaswanth.gvb@gmail.com</a>
+        <a class="btn btn-sec" href="tel:+919381390057">📞 +91 93813 90057</a>
+        <a class="btn btn-sec" href="https://linkedin.com/in/yaswanth-gurram-933a9b152" target="_blank">LinkedIn ↗</a>
+        <a class="btn btn-sec" href="https://github.com/Gurram-2000" target="_blank">GitHub ↗</a>
+      </div>
+    </div>
+    <footer>© 2025 Venkata Bala Sai Yaswanth Gurram · Built with ❤️ & Node.js spirit</footer>
+  </div>
+</section>
+
+<script>
+  // scroll reveal
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  // close mobile menu on click
+  document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>
