@@ -211,8 +211,8 @@
   </p>
   <div class="stats">
     <div class="stat"><div class="n grad-txt"><span class="count" data-target="4">0</span>+</div><div class="l">Years Experience</div></div>
-    <div class="stat"><div class="n grad-txt"><span class="count" data-target="600">0</span>+</div><div class="l">Microservices Touched</div></div>
-    <div class="stat"><div class="n grad-txt"><span class="count" data-target="55">0</span>%</div><div class="l">MTTR Reduction</div></div>
+    <div class="stat"><div class="n grad-txt"><span class="count" data-target="200">0</span>+</div><div class="l">Microservices Touched</div></div>
+    <div class="stat"><div class="n grad-txt"><span class="count" data-target="12">0</span>+</div><div class="l">Projects Handled</div></div>
     <div class="stat"><div class="n grad-txt"><span class="count" data-target="99" data-suffix=".9">0</span>%</div><div class="l">Uptime Delivered</div></div>
   </div>
 </div></section>
@@ -223,7 +223,7 @@
   <div class="skill-grid">
     <div class="skill-card"><h3>💻 Languages</h3><div><span class="chip">JavaScript (ES6+)</span><span class="chip">Python 3.x</span></div></div>
     <div class="skill-card"><h3>⚙️ Backend</h3><div><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">Flask</span><span class="chip">FastAPI</span></div></div>
-    <div class="skill-card"><h3>☁️ AWS Cloud</h3><div><span class="chip">Lambda</span><span class="chip">DynamoDB</span><span class="chip">S3</span><span class="chip">API Gateway</span><span class="chip">EventBridge</span><span class="chip">SQS/SNS</span><span class="chip">EC2</span><span class="chip">CloudWatch</span><span class="chip">Bedrock</span></div></div>
+    <div class="skill-card"><h3>☁️ AWS Cloud</h3><div><span class="chip">Lambda</span><span class="chip">DynamoDB</span><span class="chip">S3</span><span class="chip">API Gateway</span><span class="chip">IAM</span><span class="chip">EventBridge</span><span class="chip">SQS/SNS</span><span class="chip">EC2</span><span class="chip">CloudWatch</span><span class="chip">Bedrock</span></div></div>
     <div class="skill-card"><h3>🗄️ Databases</h3><div><span class="chip">MongoDB</span><span class="chip">DynamoDB</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">Pinecone</span></div></div>
     <div class="skill-card"><h3>🤖 AI / LLM</h3><div><span class="chip">LangChain</span><span class="chip">LangGraph</span><span class="chip">OpenAI API</span><span class="chip">RAG</span><span class="chip">Vector Search</span></div></div>
     <div class="skill-card"><h3>🚀 DevOps</h3><div><span class="chip">GitHub Actions</span><span class="chip">AWS CDK</span><span class="chip">Kubernetes</span><span class="chip">Dynatrace</span></div></div>
@@ -337,42 +337,89 @@
 </div></section>
 
 <script>
-  // theme toggle
-  const tb=document.getElementById('themeBtn'),root=document.documentElement;
-  const saved=localStorage.getItem('theme');if(saved){root.setAttribute('data-theme',saved);tb.textContent=saved==='light'?'☀️':'🌙'}
-  tb.onclick=()=>{const n=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',n);tb.textContent=n==='light'?'☀️':'🌙';localStorage.setItem('theme',n)};
+  // ===== Theme toggle =====
+  var tb = document.getElementById('themeBtn');
+  var root = document.documentElement;
+  var saved = localStorage.getItem('theme');
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+    tb.textContent = (saved === 'light') ? '☀️' : '🌙';
+  }
+  tb.onclick = function () {
+    var n = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+    root.setAttribute('data-theme', n);
+    tb.textContent = (n === 'light') ? '☀️' : '🌙';
+    localStorage.setItem('theme', n);
+  };
 
-  // typing effect
-  const roles=['Backend Engineer','Node.js & Python Developer','AWS Cloud Specialist','Agentic AI & GenAI Engineer'];
-  let ri=0,ci=0,del=false;const el=document.getElementById('typed');
-  (function type(){const w=roles[ri];el.textContent=del?w.substring(0,ci--):w.substring(0,ci++);
-    if(!del&&ci===w.length+1){del=true;setTimeout(type,1400);return}
-    if(del&&ci===0){del=false;ri=(ri+1)%roles.length}
-    setTimeout(type,del?45:90)})();
+  // ===== Typing effect =====
+  var roles = ['Backend Engineer', 'Node.js & Python Developer', 'AWS Cloud Specialist', 'Agentic AI & GenAI Engineer'];
+  var ri = 0, ci = 0, del = false;
+  var typedEl = document.getElementById('typed');
+  function type() {
+    var w = roles[ri];
+    typedEl.textContent = del ? w.substring(0, ci--) : w.substring(0, ci++);
+    if (!del && ci === w.length + 1) { del = true; setTimeout(type, 1400); return; }
+    if (del && ci === 0) { del = false; ri = (ri + 1) % roles.length; }
+    setTimeout(type, del ? 45 : 90);
+  }
+  type();
 
-  // scroll progress
-  onscroll=()=>{const h=document.documentElement;document.getElementById('progress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%'};
+  // ===== Scroll progress bar =====
+  window.onscroll = function () {
+    var h = document.documentElement;
+    var pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    document.getElementById('progress').style.width = pct + '%';
+  };
 
-  // reveal + counters + bars
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{
-    if(!e.isIntersecting)return;e.target.classList.add('show');
-    e.target.querySelectorAll('.count').forEach(c=>{
-      const t=+c.dataset.target,sfx=c.dataset.suffix||'';let n=0;const step=t/45;
-      const i=setInterval(()=>{n+=step;if(n>=t){n=t;clearInterval(i)}c.textContent=Math.floor(n)+sfx},22)});
-    e.target.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.w+'%');
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(s=>obs.observe(s));
+  // ===== Reveal + counters + skill bars =====
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('show');
 
-  // mobile menu close
-  document.querySelectorAll('#nav a').forEach(a=>a.onclick=()=>document.getElementById('nav').classList.remove('open'));
+      // animated counters
+      e.target.querySelectorAll('.count').forEach(function (c) {
+        var t = parseFloat(c.dataset.target);
+        var sfx = c.dataset.suffix || '';
+        var n = 0;
+        var step = t / 45;
+        var iv = setInterval(function () {
+          n += step;
+          if (n >= t) { n = t; clearInterval(iv); }
+          c.textContent = Math.floor(n) + sfx;
+        }, 22);
+      });
 
-  // contact form -> opens email client
-  function sendMail(e){e.preventDefault();
-    const n=cname.value,em=cemail.value,m=cmsg.value;
-    location.href=`mailto:yaswanth.gvb@gmail.com?subject=Portfolio inquiry from ${encodeURIComponent(n)}&body=${encodeURIComponent(m+'\n\nFrom: '+n+' ('+em+')')}`;}
+      // skill bars
+      e.target.querySelectorAll('.bar-fill').forEach(function (b) {
+        b.style.width = b.dataset.w + '%';
+      });
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(function (s) { obs.observe(s); });
 
-  // resume button: generates a clean print-to-PDF of the page
-  document.getElementById('resumeBtn').onclick=e=>{e.preventDefault();window.print()};
+  // ===== Mobile menu close on click =====
+  document.querySelectorAll('#nav a').forEach(function (a) {
+    a.onclick = function () { document.getElementById('nav').classList.remove('open'); };
+  });
+
+  // ===== Contact form -> opens email client (BUG FIXED HERE) =====
+  function sendMail(e) {
+    e.preventDefault();
+    var n = document.getElementById('cname').value;
+    var em = document.getElementById('cemail').value;
+    var m = document.getElementById('cmsg').value;
+    var subject = encodeURIComponent('Portfolio inquiry from ' + n);
+    var body = encodeURIComponent(m + '\n\nFrom: ' + n + ' (' + em + ')');
+    window.location.href = 'mailto:yaswanth.gvb@gmail.com?subject=' + subject + '&body=' + body;
+  }
+
+  // ===== Resume button: print-to-PDF =====
+  document.getElementById('resumeBtn').onclick = function (e) {
+    e.preventDefault();
+    window.print();
+  };
 </script>
 </body>
 </html>
